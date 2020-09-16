@@ -6,7 +6,6 @@ RUN cd /opt && unzip /sonarqube-8.4.2.36762.zip && mv sonarqube-8.4.2.36762 sona
 
 COPY /src/scripts/entrypoint.sh /opt/sonarqube/entrypoint.sh
 
-RUN chown -R sonar /opt/sonarqube
 RUN chgrp -R 0 /opt/sonarqube
 RUN chmod -R g+rwX /opt/sonarqube
 RUN find /opt/sonarqube -type d -exec chmod g+x {} +
