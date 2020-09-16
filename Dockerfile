@@ -6,7 +6,9 @@ RUN cd /opt && unzip /sonarqube-8.4.2.36762.zip && mv sonarqube-8.4.2.36762 sona
 RUN groupadd sonar && useradd -M -g sonar -d /opt/sonarqube sonar
 RUN chown -R sonar:sonar /opt/sonarqube && rm -rf /sonarqube-8.4.2.36762.zip
 
-COPY --chown=sonar:sonar /src/scripts/entrypoint.sh /entrypoint.sh
+COPY /src/scripts/entrypoint.sh /entrypoint.sh
+
+RUN chown sonar:sonar /entrypoint.sh
 
 USER sonar
 WORKDIR /opt/sonarqube
