@@ -1,6 +1,9 @@
 #!/bin/sh
 
-whoami
+echo "UID: $UID"
+cat /etc/passwd | grep $UID
+
+find /opt/sonarqube -ls
 
 cd /opt/sonarqube
 
