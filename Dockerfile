@@ -6,14 +6,17 @@ RUN cd /opt && unzip /sonarqube-8.4.2.36762.zip && mv sonarqube-8.4.2.36762 sona
 
 COPY /src/scripts/entrypoint.sh /opt/sonarqube/entrypoint.sh
 
-RUN useradd -u 1001 -r -g 0 -d /opt/sonarqube -s /sbin/nologin \
-    -c "Default Application User" default && \
-    chown -R 1001:0 /opt/sonarqube
+RUN useradd -r sonar
+
+RUN chown -R sonar /opt/sonarqube
+RUN chgrp -R 0 /opt/sonarqube
+RUN chmod -R g+rw /opt/sonarqube
+RUN find /opt/sonarqube -type d -exec chmod g+x {} +
 
 WORKDIR /opt/sonarqube
 
 EXPOSE 9000
 
-USER 1001
+USER sonar
 
 ENTRYPOINT ["/bin/sh", "/opt/sonarqube/entrypoint.sh"]
