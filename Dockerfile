@@ -12,6 +12,6 @@ WORKDIR /opt/sonarqube
 
 EXPOSE 9000
 
-USER 10001
+USER 1001
 
 ENTRYPOINT ["/bin/sh", "/opt/sonarqube/entrypoint.sh"]
