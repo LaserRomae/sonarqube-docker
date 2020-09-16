@@ -6,7 +6,9 @@ RUN cd /opt && unzip /sonarqube-8.4.2.36762.zip && mv sonarqube-8.4.2.36762 sona
 
 COPY /src/scripts/entrypoint.sh /opt/sonarqube/entrypoint.sh
 
-RUN chgrp -R 0 /opt/sonarqube && chmod -R g=u /opt/sonarqube
+RUN useradd -u 1001 -r -g 0 -d /opt/sonarqube -s /sbin/nologin \
+    -c "Default Application User" default && \
+    chown -R 1001:0 ${APP_ROOT}
 
 WORKDIR /opt/sonarqube
 
