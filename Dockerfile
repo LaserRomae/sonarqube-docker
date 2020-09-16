@@ -1,6 +1,6 @@
 FROM centos:7
 
-RUN yum -y install java-11-openjdk wget unzip bc
+RUN yum -y install java-11-openjdk wget unzip bc sudo
 RUN wget --quiet "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.4.2.36762.zip"
 RUN cd /opt && unzip /sonarqube-8.4.2.36762.zip && mv sonarqube-8.4.2.36762 sonarqube
 RUN groupadd sonar && useradd -M -g sonar -d /opt/sonarqube sonar

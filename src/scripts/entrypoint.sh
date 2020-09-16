@@ -10,4 +10,4 @@ memory=$( echo "($( free -m | grep '^Mem:' | tr -s ' ' | cut -d ' ' -f 2 ) / 102
 echo "setting RAM to ${memory} mb"
 
 echo "starting sonarqube"
-su -l sonar -c "cd /opt/sonarqube; java -Xms${memory}m -Xmx${memory}m -jar lib/sonar-application-8.4.2.36762.jar -Djava.security.egd=file:/dev/./urandom"
+sudo su -l sonar -c "cd /opt/sonarqube; java -Xms${memory}m -Xmx${memory}m -jar lib/sonar-application-8.4.2.36762.jar -Djava.security.egd=file:/dev/./urandom"
