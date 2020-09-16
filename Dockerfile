@@ -8,7 +8,7 @@ COPY /src/scripts/entrypoint.sh /opt/sonarqube/entrypoint.sh
 
 RUN useradd -u 1001 -r -g 0 -d /opt/sonarqube -s /sbin/nologin \
     -c "Default Application User" default && \
-    chown -R 1001:0 ${APP_ROOT}
+    chown -R 1001:0 /opt/sonarqube
 
 WORKDIR /opt/sonarqube
 
