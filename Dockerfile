@@ -14,4 +14,4 @@ EXPOSE 9000
 
 USER 10001
 
-ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "/opt/sonarqube/entrypoint.sh"]
